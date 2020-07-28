@@ -1,4 +1,6 @@
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
 
 module.exports = {
   mode: 'production',
@@ -14,9 +16,16 @@ module.exports = {
     ]
   },
   plugins: [
+    new BundleAnalyzerPlugin({
+      openAnalyzer: false,
+      analyzerMode: 'json'
+    }),
     new HtmlWebpackPlugin({
       template: './src/client/views/index.html',
       filename: './index.html'
+    }),
+    new CleanWebpackPlugin({
+      verbose: true
     })
   ]
 };

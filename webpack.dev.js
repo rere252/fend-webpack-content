@@ -1,4 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+// Named import needed.
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -18,6 +20,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/client/views/index.html',
       filename: './index.html'
+    }),
+    new CleanWebpackPlugin({
+      verbose: true
     })
   ]
 };
