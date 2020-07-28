@@ -7,7 +7,8 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
+        // Loaders are executed right-to-left (or bottom-to-top).
+        use: ['babel-loader', 'eslint-loader']
       }
     ]
   }
