@@ -5,6 +5,10 @@ const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
 module.exports = {
   mode: 'production',
   entry: './src/client/index.js',
+  output: {
+    libraryTarget: 'var',
+    library: 'Client'
+  },
   module: {
     rules: [
       {
@@ -12,6 +16,10 @@ module.exports = {
         exclude: /node_modules/,
         // Loaders are executed right-to-left (or bottom-to-top).
         use: ['babel-loader', 'eslint-loader']
+      },
+      {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
       }
     ]
   },
