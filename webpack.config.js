@@ -5,6 +5,7 @@ const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 // Common
 const commonConfig = {
@@ -69,7 +70,8 @@ const prodConfig = {
     }),
     new MiniCSSExtractPlugin({
       filename: "[name].css"
-    })
+    }),
+    new WorkboxPlugin.GenerateSW()
   ]
 };
 
